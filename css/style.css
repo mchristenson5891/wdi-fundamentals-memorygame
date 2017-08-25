@@ -74,6 +74,12 @@ footer {
 	font-size: 14px;
 	letter-spacing: .08em;
 	font-weight: 500;
+	/* To make is stick to the bottom of the page */
+	width: 97%;
+	position: absolute;
+    left: 0;
+    bottom: 0;
+    overflow: hidden;
 }
 
 .clearfix:after {
