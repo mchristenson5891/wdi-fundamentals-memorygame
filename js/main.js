@@ -57,7 +57,7 @@ function nextRound () {
 
 // Create the board - section and divs, and appends them to the game-board div. I used a Self-Invoking Function so that it will call itself.
 
-function createBoard() {
+(function createBoard() {
 	debugger;
 	for (var i = 0; i < cards.length; i++) {
 		const section = createSection();
@@ -74,7 +74,7 @@ function createBoard() {
 	shuffleCards();
 	hideBtns();
 	return;
-}
+})();
 
 // These functions below will create the actual card - front and back. 
 
@@ -196,4 +196,3 @@ function newGame() {
 	return document.location.reload();
 }
 
-createBoard();
