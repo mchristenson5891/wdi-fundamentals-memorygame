@@ -1,3 +1,5 @@
+/* GENERAL */
+
 body {
 	text-align: center;
 	margin: 0;
@@ -11,7 +13,6 @@ nav {
 nav a {
 	margin: 0 20px;
 }
-
 
 h1 {
 	font-family: Raleway;
@@ -36,50 +37,46 @@ a:hover {
   border-color: white;
 }
 
+p {
+    font-family: "Droid Serif";
+    line-height: 26px;
+    font-size: 18px;
+}
+
+header {
+    background-color: #F15B31;
+    padding: 30px 20px;
+
+}
+
+main {
+    width: 850px;
+    margin: 0 auto;
+}
+
+footer {
+    text-transform: uppercase;
+    padding: 0 20px;
+    background-color: #0D2C40;
+    color: white;
+    font-size: 14px;
+    letter-spacing: .08em;
+    font-weight: 500;
+    width: 97%;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    overflow: hidden;
+}
+
+/* FOOTER */
+
 .instructions {
 	font-family: Raleway;
 	color: #0d2c40;
 	letter-spacing: 1px;
 	font-weight: 600;
 	font-size: 20px;
-
-}
-
-p {
-	font-family: "Droid Serif";
-	line-height: 26px;
-	font-size: 18px;
-}
-
-header {
-	background-color: #F15B31;
-	padding: 30px 20px;
-
-}
-
-main {
-	width: 850px;
-	margin: 0 auto;
-}
-
-img {
-	margin: 40px 8px;
-}
-
-footer {
-	text-transform: uppercase;
-	padding: 0 20px;
-	background-color: #0D2C40;
-	color: white;
-	font-size: 14px;
-	letter-spacing: .08em;
-	font-weight: 500;
-	/* To make is stick to the bottom of the page */
-	width: 97%;
-	position: absolute;
-    left: 0;
-    bottom: 0;
-    overflow: hidden;
 }
 
 .clearfix:after {
@@ -104,6 +101,8 @@ footer {
 	font-weight: 700;
 }
 
+/* BUTTONS */
+
 button {
 	padding: 16.8px 44px;
     color: #00A6B3;
@@ -122,8 +121,61 @@ button:hover {
 	cursor: pointer;
 }
 
-img {
-	cursor: pointer;
+/* CARDS */
+
+.container {
+    display: inline-block;
+    width: 175px;
+    height: 279px;
+    position: relative;
+    margin-left: 20px;
+    -webkit-perspective: 800px;
+    -moz-perspective: 800px;
+    -o-perspective: 800px;
+    perspective: 800px;
+}
+
+.card {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    transition: transform 0.3s linear;
+    -webkit-transform-style: preserve-3d;
+    -moz-transform-style: preserve-3d;
+    -o-transform-style: preserve-3d;
+    transform-style: preserve-3d;
+    -webkit-transform-origin: 50% 50%;
+    cursor: pointer;
+}
+
+.card div {
+    display: block;
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    -webkit-backface-visibility: hidden; 
+    backface-visibility: hidden;
+}
+
+.card .back {
+    background-size: cover;
+    background-image: url("../images/back.png");
+}
+
+.card .front {
+	background-size: cover;
+    -webkit-transform: rotateY( 180deg );
+    -moz-transform: rotateY( 180deg );
+    -o-transform: rotateY( 180deg );
+    transform: rotateY( 180deg );
+}
+
+.card.flipped {
+    -webkit-transform: rotateY( 180deg );
+    -moz-transform: rotateY( 180deg );
+    -o-transform: rotateY( 180deg );
+    transform: rotateY( 180deg );
+    cursor: default;
 }
 
 .queen-diamonds {
@@ -142,6 +194,7 @@ img {
     background-image: url(../images/king-of-diamonds.png);
 }
 
+/* MESSAGE BOX AND OVERLAY*/
 
 #overlay {
     position: fixed;
@@ -156,84 +209,34 @@ img {
 }
 
 #message-box {
-	border-radius: 20px;
-	height: 300px;
+    border-radius: 20px;
+    height: 300px;
     width: 450px;
     position: fixed;
     background-color: #fff;
     top: 50%;
     left: 50%;
-    margin-top: -150px; /* Negative half of height. */
+    margin-top: -150px;
     margin-left: -225px;
-
-
 }
 
 #message-box h2 {
-	padding: 40px 0 40px 0;
-	background-color: #F15B31;
+    padding: 40px 0 40px 0;
+    background-color: #F15B31;
     margin-top: 0px;
-	border-radius: 20px 20px 0 0;
+    border-radius: 20px 20px 0 0;
 }
 
 #message-box h3 {
-	margin-bottom: 40px;
+    margin-bottom: 40px;
 }
 
 .show {
-	display: block;
+    display: block;
 }
 
 .hide {
-	display: none;
+    display: none;
 }
 
 
-.container {
-	display: inline-block;
-    width: 175px;
-    height: 279px;
-    position: relative;
-    margin-left: 20px;
-    -webkit-perspective: 800px;
-    -moz-perspective: 800px;
-    -o-perspective: 800px;
-    perspective: 800px;
-}
-.card {
-    width: 100%;
-    height: 100%;
-    position: absolute;
-    transition: transform 0.3s linear;
-    -webkit-transform-style: preserve-3d;
-    -moz-transform-style: preserve-3d;
-    -o-transform-style: preserve-3d;
-    transform-style: preserve-3d;
-    -webkit-transform-origin: 50% 50%;
-}
-.card div {
-    display: block;
-    height: 100%;
-    width: 100%;
-    position: absolute;
-    -webkit-backface-visibility: hidden; 
-    backface-visibility: hidden;
-}
-.card .back {
-    background-size: cover;
-    background-image: url("../images/back.png");
-}
-.card .front {
-	background-size: cover;
-    -webkit-transform: rotateY( 180deg );
-    -moz-transform: rotateY( 180deg );
-    -o-transform: rotateY( 180deg );
-    transform: rotateY( 180deg );
-
-}
-.card.flipped {
-    -webkit-transform: rotateY( 180deg );
-    -moz-transform: rotateY( 180deg );
-    -o-transform: rotateY( 180deg );
-    transform: rotateY( 180deg );
-}
