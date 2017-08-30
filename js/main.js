@@ -26,7 +26,6 @@ const cards = [
 ];
 
 
-console.log("working")
 // Add the event listeners to the the buttons.
 
 nextBtn.addEventListener("click", nextRound);
