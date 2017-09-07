@@ -1,27 +1,17 @@
-var overlay = document.getElementById("overlay");
-var score = document.getElementsByClassName("score");
-var nextBtn = document.getElementById("next");
-var tryAgainBtn = document.getElementById("try-again");
-var matchMsg = document.getElementById("match");
-var newGameBtn = document.getElementById("new-game");
-var instructions = document.getElementById("instructions");
-var instructionLink = document.getElementById("instruction-link");
-var closeBtn = document.getElementById("close");
-var messageBox = document.getElementById("message-box");
-
-
-// I would've used const for all my variables but with Safari you can't have your variable the same name as the ID or class that you
-// are getting.
-
-const playingCards = document.getElementById("cards");
-const marvel = document.getElementById("marvel");
-
-playingCards.addEventListener("click", pickCards);
-marvel.addEventListener("click", pickCards);
-
+const overlayElement = document.getElementById("overlay");
+const scoreElement = document.getElementsByClassName("score");
+const nextBtn = document.getElementById("next");
+const tryAgainBtn = document.getElementById("try-again");
+const matchMsg = document.getElementById("match");
+const newGameBtn = document.getElementById("new-game");
+const instructionsElement = document.getElementById("instructions");
+const instructionLink = document.getElementById("instruction-link");
+const closeBtn = document.getElementById("close");
+const messageBox = document.getElementById("message-box");
+const playingCards = document.getElementById("playing-cards");
+const marvelElement = document.getElementById("marvel");
 let usersPick;
 let cardsInPlay = [];
-
 const cards = [
 	{
 		rank: "queen",
@@ -40,7 +30,6 @@ const cards = [
 		suit: "diamonds"
 	},	
 ];
-
 const marvelCards = [
 	{
 		rank: "captain"
@@ -63,12 +52,9 @@ tryAgainBtn.addEventListener("click", tryAgain);
 newGameBtn.addEventListener("click", newGame);
 instructionLink.addEventListener("click", showInstructions);
 closeBtn.addEventListener("click", showInstructions);
+playingCards.addEventListener("click", pickCards);
+marvelElement.addEventListener("click", pickCards);
 
-function toggleOverlay() {
-	const overlayClassList = overlay.classList;
-	let toggle = overlayClassList.contains("show") === true ? "hide" : "show";
-	return overlay.setAttribute("class", toggle);
-}
 
 
 // tryAgain will be invoked when the try again button is click. It hides the overlay, flips the cards back, and puts the event listeners
@@ -93,7 +79,7 @@ function nextRound () {
 	setTimeout(shuffleCards, 275);
 }
 
-// Create the board - section and divs, and appends them to the game-board div. I used a Self-Invoking Function so that it will call itself.
+// Create the board - section and divs, and appends them to the game-board div.
 
 function createBoard() {
 	for (var i = 0; i < cards.length; i++) {
@@ -128,7 +114,6 @@ function createCardDiv(index) {
 }
 
 function createFrontCard(index, typeOfCard) {
-	console.log(typeOfCard);
 	let cardsToUse = typeOfCard === "cards" ? true : false;
 	const frontOfCard = document.createElement("div");
 	const cardRank = cardsToUse ? cards[index].rank : marvelCards[index].rank;
@@ -183,9 +168,9 @@ function showBackOfCards() {
 
 
 function changeScore(num) {
-	for (var i = 0; i < score.length; i++) {
-		const currentScore = parseInt(score[i].innerHTML);
-		score[i].innerHTML = currentScore + num;
+	for (var i = 0; i < scoreElement.length; i++) {
+		const currentScore = parseInt(scoreElement[i].innerHTML);
+		scoreElement[i].innerHTML = currentScore + num;
 	}
 	return;
 }
@@ -247,9 +232,14 @@ function pickCards() {
 
 
 function showInstructions() {
-	const instructionsClassList = instructions.classList;
+	const instructionsClassList = instructionsElement.classList;
 	let showOrHide = instructionsClassList.contains("show") === true ? "hide" : "show";
-	instructions.setAttribute("class", showOrHide)
+	instructionsElement.setAttribute("class", showOrHide)
 	return toggleOverlay();
 }
 
+function toggleOverlay() {
+	const overlayClassList = overlayElement.classList;
+	let toggle = overlayClassList.contains("show") === true ? "hide" : "show";
+	return overlayElement.setAttribute("class", toggle);
+}
