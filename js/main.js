@@ -4,8 +4,24 @@ var nextBtn = document.getElementById("next");
 var tryAgainBtn = document.getElementById("try-again");
 var matchMsg = document.getElementById("match");
 var newGameBtn = document.getElementById("new-game");
+var instructions = document.getElementById("instructions");
+var instructionLink = document.getElementById("instruction-link");
+var closeBtn = document.getElementById("close");
+var messageBox = document.getElementById("message-box");
 
+
+// I would've used const for all my variables but with Safari you can't have your variable the same name as the ID or class that you
+// are getting.
+
+const playingCards = document.getElementById("cards");
+const marvel = document.getElementById("marvel");
+
+playingCards.addEventListener("click", pickCards);
+marvel.addEventListener("click", pickCards);
+
+let usersPick;
 let cardsInPlay = [];
+
 const cards = [
 	{
 		rank: "queen",
@@ -25,19 +41,41 @@ const cards = [
 	},	
 ];
 
+const marvelCards = [
+	{
+		rank: "captain"
+	},
+	{
+		rank: "captain"
+	},
+	{
+		rank: "ironMan"
+	},
+	{
+		rank: "ironMan"
+	},	
+];
 
 // Add the event listeners to the the buttons.
 
 nextBtn.addEventListener("click", nextRound);
 tryAgainBtn.addEventListener("click", tryAgain);
 newGameBtn.addEventListener("click", newGame);
+instructionLink.addEventListener("click", showInstructions);
+closeBtn.addEventListener("click", showInstructions);
+
+function toggleOverlay() {
+	const overlayClassList = overlay.classList;
+	let toggle = overlayClassList.contains("show") === true ? "hide" : "show";
+	return overlay.setAttribute("class", toggle);
+}
 
 
 // tryAgain will be invoked when the try again button is click. It hides the overlay, flips the cards back, and puts the event listeners
 // back on the cards.
 
 function tryAgain() {
-	overlay.setAttribute("class", "hide");
+	toggleOverlay();
 	showBackOfCards();
 	hideBtns();
 	addEventListenerToCards();
@@ -47,7 +85,7 @@ function tryAgain() {
 // event listeners to the cards, and then will shuffle them after a 275 millisecond delay.
 
 function nextRound () {
-	overlay.setAttribute("class", "hide");
+	toggleOverlay();
 	hideBtns();
 	cardsInPlay = [];
 	showBackOfCards();
@@ -57,14 +95,12 @@ function nextRound () {
 
 // Create the board - section and divs, and appends them to the game-board div. I used a Self-Invoking Function so that it will call itself.
 
-(function createBoard() {
-	debugger;
+function createBoard() {
 	for (var i = 0; i < cards.length; i++) {
 		const section = createSection();
 		const cardDiv = createCardDiv(i)
-		const frontDiv = createFrontCard(i);
+		const frontDiv = createFrontCard(i, usersPick);
 		const backDiv = createBackCard();
-
 		section.appendChild(cardDiv);
 		cardDiv.appendChild(frontDiv);
 		cardDiv.appendChild(backDiv);
@@ -74,7 +110,7 @@ function nextRound () {
 	shuffleCards();
 	hideBtns();
 	return;
-})();
+};
 
 // These functions below will create the actual card - front and back. 
 
@@ -91,10 +127,12 @@ function createCardDiv(index) {
 	return cardDiv;
 }
 
-function createFrontCard(index) {
+function createFrontCard(index, typeOfCard) {
+	console.log(typeOfCard);
+	let cardsToUse = typeOfCard === "cards" ? true : false;
 	const frontOfCard = document.createElement("div");
-	const cardRank = cards[index].rank;
-	const cardSuit = cards[index].suit;
+	const cardRank = cardsToUse ? cards[index].rank : marvelCards[index].rank;
+	const cardSuit = cardsToUse ? cards[index].suit : "marvel";
 	const cardClass = "front" + " " + cardRank + "-" + cardSuit;
 	frontOfCard.setAttribute("class", cardClass);
 	return frontOfCard;
@@ -116,9 +154,10 @@ function hideBtns() {
 // foundMatch function is passed a boolean and then is ran through two different fucntions to see what button and message to display. 
 
 function foundMatch (match) {
+	messageBox.setAttribute("class", "show");
 	showMsg(match);
 	showBtns(match);
-	return overlay.setAttribute("class", "show");
+	return toggleOverlay();
 }
 
 
@@ -194,5 +233,23 @@ function shuffleCards() {
 
 function newGame() {
 	return document.location.reload();
+}
+
+function pickCards() {
+	const typeOfGame = document.getElementById("type-of-game");
+	const usersCardPick = this.getAttribute("id");
+	let choice = usersCardPick === "marvel" ? "marvel" : "cards" || "cards";
+	usersPick = choice;
+	typeOfGame.setAttribute("class", "hide");
+	toggleOverlay();
+	return createBoard();
+}
+
+
+function showInstructions() {
+	const instructionsClassList = instructions.classList;
+	let showOrHide = instructionsClassList.contains("show") === true ? "hide" : "show";
+	instructions.setAttribute("class", showOrHide)
+	return toggleOverlay();
 }
 

@@ -69,6 +69,10 @@ footer {
     overflow: hidden;
 }
 
+#game-board {
+    margin-top: 20px;
+}
+
 /* FOOTER */
 
 .instructions {
@@ -113,12 +117,21 @@ button {
     border-radius: 12rem;
     border: 3.2px solid #00A6B3;
     margin: 0 auto;
+    margin-top: 55px;
 }
 
 button:hover {
 	background-color: #00A6B3;
 	color: #fff;
 	cursor: pointer;
+}
+
+#new-game {
+    margin-top: 40px;
+}
+
+#close {
+    margin-top: 0px;
 }
 
 /* CARDS */
@@ -146,6 +159,7 @@ button:hover {
     transform-style: preserve-3d;
     -webkit-transform-origin: 50% 50%;
     cursor: pointer;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.2);
 }
 
 .card div {
@@ -193,6 +207,12 @@ button:hover {
 .king-diamonds {
     background-image: url(../images/king-of-diamonds.png);
 }
+.captain-marvel {
+    background-image: url(../images/captain-america.jpg);
+}
+.ironMan-marvel {
+    background-image: url(../images/iron-man.jpg);
+}
 
 /* MESSAGE BOX AND OVERLAY*/
 
@@ -239,4 +259,55 @@ button:hover {
     display: none;
 }
 
+#instructions {
+    border-radius: 20px;
+    height: 400px;
+    width: 600px;
+    position: fixed;
+    background-color: #fff;
+    top: 50%;
+    left: 50%;
+    margin-top: -200px;
+    margin-left: -300px;
+}
+
+#instructions h2 {
+    padding: 40px 0 40px 0;
+    background-color: #F15B31;
+    margin-top: 0px;
+    border-radius: 20px 20px 0 0;
+}
+
+#instructions p {
+    font-size: 16px;
+    padding: 0 25px 25px 25px;
+}
+
+#type-of-game {
+    border-radius: 20px;
+    height: 300px;
+    width: 600px;
+    position: fixed;
+    background-color: #fff;
+    top: 50%;
+    left: 50%;
+    margin-top: -150px;
+    margin-left: -300px;
+}
+
+#type-of-game h2 {
+    padding: 40px 40px 40px 40px;
+    background-color: #F15B31;
+    margin-top: 0px;
+    border-radius: 20px 20px 0 0;
+} 
+
+/* SCORE */
+
+#score {
+    display: block;
+    text-align: right;
+    font-size: 20px;
+    margin-bottom: 45px;
+}
 

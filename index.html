@@ -7,27 +7,34 @@
 	<link rel="shortcut icon" type="image/x-icon" href="images/brain.ico">
 </head>
 <body>
-	<div id="overlay" class="hide">
-		<div id="message-box">
+	<div id="overlay" class="show">
+		<div id="message-box" class="hide">
 			<h2 id="match"></h2>
-			<h3>Score: <span class="score">0</span></h3>
 			<button id="next">NEXT</button>
 			<button id="try-again">TRY AGAIN</button>
 		</div>
+		<div id="instructions" class="hide">
+			<h2>Instructions</h2>
+			<p>Concentration, also known as Match Match, Memory, Pelmanism, Shinkei-suijaku, Pexeso or simply Pairs, is a card game in which all of the cards are laid face down on a surface and two cards are flipped face up over each turn. The object of the game is to turn over pairs of matching cards.</p>
+			<button id="close">CLOSE</button>
+		</div>
+		<div id="type-of-game">
+			<h2>Which kind of cards would you like to use?</h2>
+			<button id="cards">PLaying Cards</button>
+			<button id="marvel">Marvel Cards</button>	
+		</div>
 	</div>
 	<header>
-		<h1>Memory Game</h1>	
+		<h1>Memory Game</h1>
 	</header>
 	<nav>
-		<a href="#">Instructions</a>		
-		<a href="#">Game</a>
+		<a id="new-game" href="#">New Game</a>
+		<a id="instruction-link" href="#">Instructions</a>		
 	</nav>
 	<main>
-		<h2 class="instructions">Instructions</h2>
-		<p>Concentration, also known as Match Match, Memory, Pelmanism, Shinkei-suijaku, Pexeso or simply Pairs, is a card game in which all of the cards are laid face down on a surface and two cards are flipped face up over each turn. The object of the game is to turn over pairs of matching cards.</p>
-		<div id="game-board" class="board clearfix"></div>
-		<h2>Score: <span class="score">0</span></h2>
-		<button id="new-game">NEW GAME</button>
+		<div id="game-board" class="board clearfix">
+			<span id="score" >Score: <span class="score">0</span></span>
+		</div>	
 	</main>
 	<footer class="clearfix">
 		<p class="copyright">&copy; 2017</p>
